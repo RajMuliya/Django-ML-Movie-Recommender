@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+
+<head> 
+    {% block title %}
+Search Page
+{% endblock title %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>   
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>   
+    
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />   
+</head> 
+
+{% block body %}
+{% if recommended_movies %}
+    <body>
+        <div class="container mt-3 bg-dark">
+            <h1 class="text-center">Recommended Movies</h1>
+            <a href="/" style="text-decoration: none">
+            <div class="row">
+                {% for movie_id,movie, poster in recommended_movies %}
+                
+                
+                <div class="col-md-2 mb-2">
+                    <a style="text-decoration:none;" href="{% url 'movie_detail' movie_id=movie_id%}">
+                    <div class="card bg-body-tertiary rounded-3">
+                        <img src="{{ poster }}" style="height: 290px" class="card-img-top" alt="{{ movie }} Poster">
+                        
+                            <h6 class="text-center my-3" style="text-transform: capitalize;">{{ movie }}</h6>
+                            
+                        </div>
+                    </a>
+                </div>
+            
+                {% endfor %}
+            </div>
+        </a>
+        </div>
+        {% endif %}
+
+{% endblock body %} 

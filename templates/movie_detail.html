@@ -1,0 +1,49 @@
+{% extends "navbar.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     {% block title %} {{ movie_details.title }} {% if first_actor != "" or second_actor != "" %} | {{first_actor}} | {{second_actor}}{% endif %} {% endblock title %} 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+{% block body %}
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    {% if movie_details.poster %}
+                        <img src="{{ movie_details.poster }}" class="card-img" alt="{{ movie_details.title }} Poster">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ movie_details.title }}</h3>
+
+                        {% if movie_details.year %}<p><strong>Year:</strong> {{ movie_details.year }}</p>{% endif %}
+                        {% if movie_details.genre %}<p><strong>Genre:</strong> {{ movie_details.genre }}</p>{% endif %}
+                        {% if movie_details.runtime %}<p><strong>Runtime:</strong> {{ movie_details.runtime }}</p>{% endif %}
+                        {% if movie_details.released %}<p><strong>Release Date:</strong> {{ movie_details.released }}</p>{% endif %}
+                        {% if movie_details.language %}<p><strong>Language:</strong> {{ movie_details.language }}</p>{% endif %}
+                        {% if movie_details.country %}<p><strong>Country:</strong> {{ movie_details.country }}</p>{% endif %}
+                        {% if movie_details.director %}<p><strong>Director:</strong> {{ movie_details.director }}</p>{% endif %}
+                        {% if movie_details.writers %}<p><strong>Writers:</strong> {{ movie_details.writers }}</p>{% endif %}
+                        {% if movie_details.actors %}<p><strong>Cast:</strong> {{ movie_details.actors }}</p>{% endif %}
+                        {% if movie_details.plot %}<p><strong>Plot:</strong> {{ movie_details.plot }}</p>{% endif %}
+                        {% if movie_details.awards %}<p><strong>Awards:</strong> {{ movie_details.awards }}</p>{% endif %}
+                        {% if movie_details.box_office %}<p><strong>Box Office:</strong> {{ movie_details.box_office }}</p>{% endif %}
+                        {% if movie_details.imdb_rating %}<p><strong>IMDb Rating:</strong> {{ movie_details.imdb_rating }}</p>{% endif %}
+                        {% if movie_details.production %}<p><strong>Production:</strong> {{ movie_details.production }}</p>{% endif %}
+
+                        {% if movie_details.error %}
+                            <p class="text-danger"><strong>{{ movie_details.error }}</strong></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock body %}
+</html>
